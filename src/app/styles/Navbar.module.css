@@ -1,0 +1,118 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbarBrand {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  align-items: center;
+  gap: 10px; /* Adjusted gap between items */
+}
+
+.navbarBrand img {
+  width: 25px; /* Adjust width as needed */
+  height: auto;
+}
+
+.navbarMenu {
+  flex: 1;
+  text-align: center;
+}
+
+.navbarLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbarLinks li {
+  display: inline;
+}
+
+.navbarLinks a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.navbarIcons {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.icon {
+  width: 24px; 
+  height: 24px;
+  cursor: pointer; 
+}
+.iconuser {
+  width: 24px; 
+  height: 24px;
+  cursor: pointer; 
+}
+.languageDropdown {
+  display: flex;
+  align-items: center;
+}
+
+.languageDropdownButton {
+  background-color: white;
+  border: 1px solid #ddd; /* Add border for better visibility */
+  padding: 5px 10px; /* Add some padding */
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px; /* Rounded corners */
+}
+
+.languageDropdownButton:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+}
+
+
+
+/* HeroSection start*/
+.herosection{
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text content */
+  padding: 50px;
+}
+.heroHedingText{
+  font-size: 50px;
+  font-weight: 300;
+}
+@media (max-width: 400px)  {
+  .iconuser {
+  display: none;
+  }
+  .languageDropdownButton{
+    display: none;
+  }
+  .navbar{
+    display: none;
+  }
+  .heroHedingText{
+    font-size: 30px;
+    font-weight: 300;
+  }
+  .herosection{
+    padding-top: 10x !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .heroparagraphText{
+    font-size: 14px;
+    padding-top: 5px;
+  }
+}

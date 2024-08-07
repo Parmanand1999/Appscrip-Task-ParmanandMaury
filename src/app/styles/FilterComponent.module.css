@@ -1,0 +1,49 @@
+/* FilterComponent.module.css */
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .filter-item-customizable {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .filter-item {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .filter-item-header {
+    display: flex;
+    justify-content: space-between; /* Align h3 and span in a row with space between */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 10px; /* Space between header and options */
+  }
+  
+  .filter-title {
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .filter-options {
+    display: flex;
+    flex-direction: column; /* Stack options vertically */
+    gap: 10px; /* Space between options */
+  }
+  
+  .filter-options input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  @media (max-width: 600px)  {
+    .filter-section{
+      display: none;
+    }
+  }
