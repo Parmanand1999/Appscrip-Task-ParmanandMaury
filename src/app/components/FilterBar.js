@@ -40,7 +40,7 @@ function FilterBar() {
           </button>
         </div>
       </div>
-      {isModalOpen && <RecommendedModal toggleModal={isModalOpen} />}
+      {isModalOpen && <RecommendedModal toggleModal={toggleModal} />}
 
      
     </div>
