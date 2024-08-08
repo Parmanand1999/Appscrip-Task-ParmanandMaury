@@ -3,11 +3,14 @@ import styles from "../styles/FilterBar.module.css";
 import RecommendedModal from "./RecommendedModal";
 import FilterComponent from "./FilterComponent";
 import ProductCard from "./ProductCard";
+import { useSelector } from "react-redux";
 
-function FilterBar({ totalItem }) {
+function FilterBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filtertoggle, setFiltertoggle] = useState(true);
-  const [countitem, setCountitem] = useState(null);
+  const countData=useSelector((state)=>state.counterData.countData)
+ 
+  
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -15,19 +18,14 @@ function FilterBar({ totalItem }) {
   const togglefilter = () => {
     setFiltertoggle(!filtertoggle);
   };
-  const totalItems =localStorage?.getItem('totalItems')
   
-  useEffect(() => {
-    
-    setCountitem(totalItems);
-  }, [totalItems]);
   
 
   return (
     <div>
       <div className={styles["filter-bar"]}>
         <div className={styles["filter-bar-left"]}>
-          <span className={styles["items-count"]}>{countitem} ITEMS</span>
+          <span className={styles["items-count"]}>{countData} ITEMS</span>
           <button
             className={styles["hide-filter-button"]}
             onClick={togglefilter}

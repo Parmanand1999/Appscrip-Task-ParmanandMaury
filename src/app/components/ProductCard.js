@@ -1,21 +1,22 @@
+"use client"
 import React, { useEffect, useState } from "react";
 import styles from "../styles/ProductCard.module.css";
 import axios from "axios";
-import FilterBar from "./FilterBar";
+import { useDispatch } from "react-redux";
+import { addCount } from "../Redux/Slice";
 
 const ProductCard = ({ filterArray }) => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [totalItem,setTotalItem]=useState(0)
-
+  const dispatch = useDispatch();
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
         setData(response.data);
         setLoading(false);
-        setFilteredData(response.data); 
+        setFilteredData(response.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -25,22 +26,28 @@ const ProductCard = ({ filterArray }) => {
 
   useEffect(() => {
     filterData();
-    countItem()
+    
   }, [filterArray, data]);
-
+  useEffect(() => {
+    countItem();
+  }, [filteredData]);
   const filterData = () => {
-    if (!filterArray || filterArray.length === 0 || filterArray.includes("All")) {
-        setFilteredData(data);
-    }
-    else {
-      const result = data.filter((item) => filterArray?.includes(item.category));
+    if (
+      !filterArray ||
+      filterArray.length === 0 ||
+      filterArray.includes("All")
+    ) {
+      setFilteredData(data);
+    } else {
+      const result = data.filter((item) =>
+        filterArray?.includes(item.category)
+      );
       setFilteredData(result);
     }
   };
   const countItem = () => {
-    const total = filteredData?.length || 0; 
-    // setTotalItem(total); 
-    localStorage.setItem('totalItems', total); 
+    const total = filteredData?.length || 0;
+    dispatch(addCount(total));
   };
 
   return (
@@ -59,7 +66,6 @@ const ProductCard = ({ filterArray }) => {
           ))}
         </div>
       )}
-    
     </div>
   );
 };
