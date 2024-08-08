@@ -47,13 +47,7 @@ const Footer = () => {
             <li>Terms & Conditions</li>
           </ul>
         </div>
-        <div className={styles["footer-section"]}>
-          <h3>FOLLOW US</h3>
-          <div className={styles["social-icons"]}>
-            <i className={styles["icon-instagram"]}></i>
-            <i className={styles["icon-linkedin"]}></i>
-          </div>
-        </div>
+        
         <div className={styles["footer-section"]}>
           <h3>mettä muse ACCEPTS</h3>
           <div className={styles["payment-icons"]}>

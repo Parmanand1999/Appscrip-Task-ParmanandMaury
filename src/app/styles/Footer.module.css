@@ -91,3 +91,15 @@
     font-size: 14px;
   }
   
+  @media (max-width: 600px)  {
+    .footer-top {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .footer-newsletter, .footer-contact {
+      padding-top: 20px;
+      flex: 1;
+    }
+  }
+  
