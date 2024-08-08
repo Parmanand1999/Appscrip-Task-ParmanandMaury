@@ -20,7 +20,7 @@ const ProductCard = ({ filterArray }) => {
         setLoading(false);
       })
       .catch((error) => {
-        setError("Failed to fetch products");
+        setError("Failed to fetch products/Web server is down");
         setLoading(false);
         console.error("Error fetching data:", error);
       });

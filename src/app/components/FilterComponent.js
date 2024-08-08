@@ -4,9 +4,11 @@ import styles from "../styles/FilterComponent.module.css";
 import ProductCard from "./ProductCard";
 import { useSelector } from "react-redux";
 
-function FilterComponent({filtertoggle}) {
+function FilterComponent() {
   const [filterArray, setfilterArray] = useState(["All"]);
-  const toggleModal = useSelector((state) => state.toggleModal?.toggleModal);
+  const toggleModal = useSelector((state) => state.counterData.filtertoggleModal);
+  console.log(toggleModal,"true11");
+  
   const handleIdealForChange = (event) => {
     const value = event.target.value;
     if (event.target.checked) {
