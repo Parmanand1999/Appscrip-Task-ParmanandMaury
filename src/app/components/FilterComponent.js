@@ -2,10 +2,11 @@
 import React, { useState } from "react";
 import styles from "../styles/FilterComponent.module.css";
 import ProductCard from "./ProductCard";
+import { useSelector } from "react-redux";
 
 function FilterComponent({filtertoggle}) {
   const [filterArray, setfilterArray] = useState(["All"]);
-
+  const toggleModal = useSelector((state) => state.toggleModal?.toggleModal);
   const handleIdealForChange = (event) => {
     const value = event.target.value;
     if (event.target.checked) {
@@ -18,7 +19,7 @@ function FilterComponent({filtertoggle}) {
 
   return (
     <div style={{display:"flex"}}>
-     {filtertoggle? <div className={styles["filter-section"]}>
+     {toggleModal? <div className={styles["filter-section"]}>
         <div className={styles["filter-item-customizable"]}>
           <input type="checkbox" id="customizable" />
           <label htmlFor="customizable">CUSTOMIZABLE</label>

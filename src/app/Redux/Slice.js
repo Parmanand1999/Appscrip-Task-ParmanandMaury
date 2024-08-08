@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   countData:0,
+  toggleModal:(true)
 }
 
 export const counterSlice = createSlice({
@@ -9,15 +10,15 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     addCount: (state,action) => {
-     console.log(action,"state");
-     
         state.countData=action.payload
     },
-   
+    toggleModal:(state)=>{
+        state.toggleModal = !state.toggleModal;
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addCount } = counterSlice.actions
+export const { addCount,toggleModal } = counterSlice.actions
 
 export default counterSlice.reducer

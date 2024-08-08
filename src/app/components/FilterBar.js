@@ -2,24 +2,20 @@ import React, { useEffect, useState } from "react";
 import styles from "../styles/FilterBar.module.css";
 import RecommendedModal from "./RecommendedModal";
 import FilterComponent from "./FilterComponent";
-import ProductCard from "./ProductCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "../Redux/Slice";
 
 function FilterBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filtertoggle, setFiltertoggle] = useState(true);
-  const countData=useSelector((state)=>state.counterData.countData)
- 
+  const countData = useSelector((state) => state.counterData.countData);
+
+  const dispatch = useDispatch();
   
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   const togglefilter = () => {
     setFiltertoggle(!filtertoggle);
   };
-  
-  
 
   return (
     <div>
@@ -34,7 +30,10 @@ function FilterBar() {
           </button>
         </div>
         <div className={styles["filter-bar-right"]}>
-          <span className={styles["recommended-label"]} onClick={toggleModal}>
+          <span
+            className={styles["recommended-label"]}
+            onClick={() => dispatch(toggleModal())}
+          >
             RECOMMENDED
           </span>
           <button className={styles["recommended-button"]}>
@@ -43,10 +42,8 @@ function FilterBar() {
         </div>
       </div>
       {isModalOpen && <RecommendedModal toggleModal={toggleModal} />}
-      
-        <FilterComponent filtertoggle={filtertoggle} />
-        
-     
+
+      <FilterComponent filtertoggle={filtertoggle} />
     </div>
   );
 }

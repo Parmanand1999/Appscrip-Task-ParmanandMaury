@@ -10,15 +10,17 @@ const ProductCard = ({ filterArray }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const [error, setError] = useState(null);
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products")
       .then((response) => {
         setData(response.data);
-        setLoading(false);
         setFilteredData(response.data);
+        setLoading(false);
       })
       .catch((error) => {
+        setError("Failed to fetch products");
         setLoading(false);
         console.error("Error fetching data:", error);
       });
@@ -44,7 +46,8 @@ const ProductCard = ({ filterArray }) => {
       );
       setFilteredData(result);
     }
-  };
+};
+
   const countItem = () => {
     const total = filteredData?.length || 0;
     dispatch(addCount(total));
@@ -54,6 +57,8 @@ const ProductCard = ({ filterArray }) => {
     <div>
       {loading ? (
         <h1>Loading....</h1>
+      ) : error ? (
+        <h1>{error}</h1>
       ) : (
         <div className={styles["product-list"]}>
           {filteredData.map((product) => (
@@ -68,6 +73,7 @@ const ProductCard = ({ filterArray }) => {
       )}
     </div>
   );
+  
 };
 
 export default ProductCard;
